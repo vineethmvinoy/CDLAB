@@ -1,13 +1,13 @@
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h> 
-char visited[100][3];
 char trans[100][10];
 int k=0;
 int stno;
 int trap;
 void findclo(char st[])
 {
+    char visited[100][3];
     trap=0;
     strcpy(visited[k++],st);
     for(int i=0;i<stno;i++)
@@ -18,34 +18,28 @@ void findclo(char st[])
         char endstate[3];
         int j=0;
         int p;
-        for(p=0;p<sizeof(trans[i]);p++)
-        {   if(trans[i][p]==' ')
-            {
-                p++;
-                break;
-            }
+        for(p=0;trans[i][p]!=' ';p++)
+        {  
             bufferstate[j++]=trans[i][p];
         }
+        p++;
         bufferstate[j]='\0';
+        
         j=0;
-        for(;p<sizeof(trans[i]);p++)
-        {   if(trans[i][p]==' ')
-            {
-                p++;
-                break;
-            }
+        for(;trans[i][p]!=' ';p++)
+        {   
             tran[j++]=trans[i][p];
         }
+        p++;
         tran[j]='\0';
+        
         j=0;
-        for(;p<sizeof(trans[i]);p++)
+        for(;trans[i][p]!='\0';p++)
         {    
-            if(trans[i][p]=='\0')
-            break;
             endstate[j++]=trans[i][p];
         }
-            endstate[j]='\0';
-    
+
+            endstate[j]='\0';  
             if(strcmp(st,bufferstate)==0)
             if(tran[0]=='e')
         {
