@@ -60,7 +60,7 @@ printf("Enter the number of states\n");
 int n;
 scanf("%d",&n);
 printf("Enter the states\n");
-char st[n][3];
+char st[100][3];
 for(int i=0;i<n;i++)
 {
     scanf(" %s",st[i]);
